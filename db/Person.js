@@ -7,7 +7,8 @@ var subSchema = mongoose.Schema({
 var Person = mongoose.model('Person', {
     recordings: [subSchema],
     name: String,
-    age: Number
+    age: Number,
+    id: String
 });
 
 module.exports = {
