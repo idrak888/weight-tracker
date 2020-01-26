@@ -25,8 +25,7 @@ app.post('/signup', (req, res) => {
 	var NewPerson = new Person({
 		recordings: [],
 		name: req.body.name,
-		age: req.body.age,
-		id: req.body.id
+		age: req.body.age
 	});
 
 	NewPerson.save().then((doc) => {
@@ -34,11 +33,11 @@ app.post('/signup', (req, res) => {
 	});
 });
 app.post('/recordings/:id', (req, res) => {
-	const id = req.params.id;
+	const _id = req.params.id;
 	const recording = {weight:req.body.weight, date:req.body.date};
 
 	Person.update(
-		{ id }, 
+		{ _id }, 
 		{ $push: { recordings: recording } },
 		(doc) => {
 			res.send(doc);
@@ -46,9 +45,9 @@ app.post('/recordings/:id', (req, res) => {
 	);
 });	
 app.get('/recordings/:id', (req, res) => {
-	var id = req.params.id;
+	var _id = req.params.id;
 
-	Person.find({id}).then(doc => {
+	Person.find({_id}).then(doc => {
 		res.send(doc);
 	}).catch(e => {
 		res.send(e);
