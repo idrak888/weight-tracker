@@ -25,7 +25,6 @@ app.post('/signup', (req, res) => {
 	var NewPerson = new Person({
 		recordings: [],
 		name: req.body.name,
-		age: req.body.age,
 		id: req.body.id
 	});
 
